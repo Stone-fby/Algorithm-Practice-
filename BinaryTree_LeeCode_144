@@ -1,0 +1,22 @@
+// 定义二叉树节点
+class TreeNode(
+    var `val`: Int = 0,
+    var left: TreeNode? = null,
+    var right: TreeNode? = null
+)
+
+// 翻转二叉树的函数
+fun invertTree(root: TreeNode?): TreeNode? {
+    if (root == null) return null
+    swap(root)
+    invertTree(root.left)
+    invertTree(root.right)
+    return root
+}
+
+// 交换左右子树
+private fun swap(node: TreeNode) {
+    val temp = node.left
+    node.left = node.right
+    node.right = temp
+}
